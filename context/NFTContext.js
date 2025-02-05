@@ -2,16 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Web3Modal from 'web3modal';
 import { ethers } from 'ethers';
 import axios from 'axios';
-// import { create as ipfsHttpClient } from 'ipfs-http-client';
+
 
 import { MarketAddress, MarketAddressABI } from './constants';
 
-// const projectId = process.env.NEXT_PUBLIC_IPFS_PROJECT_ID;
-// const projectSecret = '05vPJAJTkGi3fD5P87sU+KNbpRpuiAfrh4hTURsGHgvTl+d+Djwiag';
-// const ipfsHost = 'https://ipfs.infra.io:5001/api/v0';
-// const basicAuth = `Basic ${Buffer.from(`${projectId}:${projectSecret}`).toString('base64')}`;
 
-// const client = ipfsHttpClient('https://api.pinata.cloud/pinning/pinFileToIPFS');
 
 const fetchContract = (signerOrProvider) => new ethers.Contract(MarketAddress, MarketAddressABI, signerOrProvider);
 
@@ -57,8 +52,8 @@ export const NFTProvider = ({ children }) => {
       const response = await axios.post('https://api.pinata.cloud/pinning/pinFileToIPFS', formData, {
         headers: {
           'Content-Type': 'application/json',
-          pinata_api_key: '98208d68c680be94222f',
-          pinata_secret_api_key: '8faa55007358ebf9523d6c4190c1d7fd7be91d31ce8c45cfa1e2e2e8b5840eb0',
+          pinata_api_key: 'pinata_key',
+          pinata_secret_api_key: 'pinata_key',
         },
       });
       const ipfsHash = response.data.IpfsHash;
@@ -100,8 +95,8 @@ export const NFTProvider = ({ children }) => {
       const response = await axios.post('https://api.pinata.cloud/pinning/pinJSONToIPFS', data, {
         headers: {
           'Content-Type': 'application/json',
-          pinata_api_key: '98208d68c680be94222f',
-          pinata_secret_api_key: '8faa55007358ebf9523d6c4190c1d7fd7be91d31ce8c45cfa1e2e2e8b5840eb0',
+          pinata_api_key: 'pinata_key',
+          pinata_secret_api_key: 'pinata_key',
         },
       });
       const ipfsHash = response.data.IpfsHash;
